@@ -134,13 +134,16 @@
 </script>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyXrXl0s6hJQF_e1-xLyIGsNqZ8NLvTwi4YuN6wEdEzTvkGxnftFmeRC_3ENk1C_nxr/exec'
+  const scriptURL = 'https://script.google.com/a/student.uns.ac.id/macros/s/AKfycbz8SZa_59RZGXm2fdrl7t-aOEoz1g4fgQ15uAs7/exec'
   const form = document.forms['submit-to-google-sheet']
 
   form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
+      .then(response => {
+      	location.href = "tenks.html";
+      	form.reset();
+      })
       .catch(error => console.error('Error!', error.message))
   })
 </script>
