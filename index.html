@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Contact V4</title>
+	<title>Survey MAKRAB</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -24,6 +24,29 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--===============================================================================================-->
+<script type='text/javascript'>
+$(window).load(function(){
+$("#keikutsertaan").change(function() {
+			console.log($("#keikutsertaan option:selected").val());
+			if ($("#keikutsertaan option:selected").val() == 'Ikut') {
+				$('#kostdmn').prop('hidden', true);
+				$('#masalah').prop('hidden', true);
+				$('#message').prop('hidden', false);
+			} else if($("#keikutsertaan option:selected").val() == 'Tidak') {
+				$('#kostdmn').prop('hidden', false);
+				$('#masalah').prop('hidden', false);
+				$('#message').prop('hidden', true);
+			} else {
+				$('#kostdmn').prop('hidden', true);
+				$('#masalah').prop('hidden', true);
+				$('#message').prop('hidden', true);
+			}
+		});
+});
+</script>
+<!--===============================================================================================-->
 </head>
 <body>
 
@@ -31,12 +54,15 @@
 	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" name="submit-to-google-sheet">
+				<center>
+					<img src="images/logow.png" height="70%" width="70%" > 
+				</center>
 				<span class="contact100-form-title">
 					WOI DIISI WOI!
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Namamu tot</span>
+					<span class="label-input100">Namamu syg</span>
 					<input class="input100" type="text" name="nama" placeholder="ajam" required>
 					<span class="focus-input100"></span>
 				</div>
@@ -50,10 +76,10 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Mo ikut makrab g?</span>
 					<div>
-						<select class="selection-2" name="keikutsertaan" required>
-							<option value="">Jawab sat!</option>
+						<select class="selection-2" name="keikutsertaan" id="keikutsertaan" required>
+							<option value="">Jawab!</option>
 							<option value="Ikut">MAW</option>
-							<option value="Mending Tidur">GK</option>
+							<option value="Tidak">G MAW</option>
 							<!-- <option>eCommerce Bussiness</option>
 							<option>UI/UX Design</option>
 							<option>Online Services</option> -->
@@ -75,7 +101,19 @@
 					<span class="focus-input100"></span>
 				</div> -->
 
-				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+				<div class="wrap-input100 validate-input" data-validate = "Message is required" id="kostdmn" hidden>
+					<span class="label-input100">Kost mu alamatnya dimanaa si kalo bole tauu?</span>
+					<textarea class="input100" name="kostdmn" id="kostdmn" placeholder="kost eja kah? ehehew"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required" id="masalah" hidden>
+					<span class="label-input100">Ada masalah apa? kok ga ikut?</span>
+					<textarea class="input100" name="masalah" placeholder="hei kamuuu, kalo ada masalah bilang aja gapapa kok, misal masalah kendaraan, strict parents, jauh, apapun itu, tulis ajaa disini yaaa ❤️"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div id="message" class="wrap-input100 validate-input" data-validate = "Message is required" hidden="">
 					<span class="label-input100">Ada pesen buat makrab besok g?</span>
 					<textarea class="input100" name="message" placeholder="barangkali ada yg mo disampein buat makrab nya, misal kek tambahin acara, cari villa dimana, dll. (gausah formal-formal bet lah ya ahaha)"></textarea>
 					<span class="focus-input100"></span>
